@@ -5,7 +5,6 @@
 ##################################
 
 ui <- fluidPage(
-    
     tags$head(
         tags$link(rel = "stylesheet", type = "text/css", href = "css/style.css")     
     ),

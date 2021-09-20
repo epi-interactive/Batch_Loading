@@ -67,7 +67,9 @@ server <- function(input, output) {
             top = 15,
             right = 15,
             wellPanel(
-                tags$h3("Batch loading"),
+                tags$h3("Batch loading data"),
+                p("Tress owned/maintained by Parks, Sport and Recreation Business Unit, Wellington City Council."),
+                p("Access the data", tags$a(href = "https://data-wcc.opendata.arcgis.com/datasets/WCC::wcc-trees/about", target = "_blank", "here")),
                 uiOutput("batchLoadingControls")
             )
         )
@@ -82,8 +84,8 @@ server <- function(input, output) {
     })
     
     output$batchLoadingButtons <- renderUI({
-        div(
-            disabled(actionButton(inputId = "showLess", "Show less")),
+        tagList(
+            actionButton(inputId = "showLess", "Show less"),
             actionButton(inputId = "showMore", "Show more"),
             actionButton(inputId = "reset", "Reset")
         )
@@ -93,8 +95,8 @@ server <- function(input, output) {
         
         div(style = "margin-bottom: 20px",
             paste0(
-                "Showing ", 1, "-", batchSizes()[length(batchSizes())], 
-                " of ", maxShapes, " locations"
+                "Showing ", 1, "-", format(batchSizes()[length(batchSizes())], big.mark = ","), 
+                " of ", format(maxShapes, big.mark = ","), " locations"
             )
         )
     })
@@ -130,7 +132,8 @@ server <- function(input, output) {
                 group = paste0("shapes", currentBatch),
                 data = currentBatchData,
                 layerId = ~OBJECTID,
-                icon = icons
+                icon = icons,
+                popup = ~popupText
             )
     }
     
