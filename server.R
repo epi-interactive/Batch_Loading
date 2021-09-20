@@ -11,10 +11,9 @@ server <- function(input, output) {
     
     
     currentBatches <- reactiveVal(1)
-    currentMaxShapes <- reactiveVal(0)
     batchSizes <- reactiveVal(numeric())
-    
     maxBatches <- reactiveVal(1)
+    
     maxShapes <- nrow(g_mainData)
     
     
@@ -38,11 +37,16 @@ server <- function(input, output) {
     })
     
     baseMap <- reactive({
-        
-        out <- leaflet(options = leafletOptions(minZoom = 3)) %>%
+        out <- leaflet(
+            options = leafletOptions(
+                minZoom = 3,
+                zoomControl = FALSE
+            )) %>%
             addTiles() %>%
+            htmlwidgets::onRender("function(el, x) {
+                L.control.zoom({ position: 'topright' }).addTo(this)
+            }") %>%
             renderBatch(1)
-        
         return(out)
     })
     
@@ -65,7 +69,8 @@ server <- function(input, output) {
     output$controls <- renderUI({
         absolutePanel(
             top = 15,
-            right = 15,
+            left = 15,
+            width = 500,
             wellPanel(
                 tags$h3("Batch loading data"),
                 p("Tress owned/maintained by Parks, Sport and Recreation Business Unit, Wellington City Council."),
@@ -92,7 +97,6 @@ server <- function(input, output) {
     })
     
     output$currentBatchesText <- renderUI({
-        
         div(style = "margin-bottom: 20px",
             paste0(
                 "Showing ", 1, "-", format(batchSizes()[length(batchSizes())], big.mark = ","), 
@@ -146,7 +150,6 @@ server <- function(input, output) {
             map <- map %>%
                 clearGroup(shapeGroupName)
         }
-
         batchSizes(batchSizes()[1:keep])
     }
     
@@ -187,7 +190,6 @@ server <- function(input, output) {
     
     
     observeEvent(batchSourceData(), {
-        
         map <- leafletProxy("map")
         currentBatches(1)
         clearBatch(map, 0)
@@ -197,7 +199,6 @@ server <- function(input, output) {
     
     
     observeEvent(input$reset, {
-        
         map <- leafletProxy("map")
         clearBatch(map, 1)
         currentBatches(1)
