@@ -1,12 +1,75 @@
+#page {
+    overflow-x: hidden;
+}
+
 .container-fluid{
     margin: 0;
     padding: 0;
 }
 
+.main-container {
+    width: 100%;
+    display: flex;
+}
+
+.sidebar-container {
+    width: 33.3%;
+    background-color: #00ADD8;
+    padding: 50px;
+    position: relative;
+}
+
+.sidebar-content-container {
+    color: #fff;
+    font-family: ff-dagny-web-pro, sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.sidebar-content-container h3 {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.sidebar-content-container a, .sidebar-content-container a:hover {
+    font-weight: bold;
+    color: #fff;
+}
+
+.sidebar-content-container button {
+    font-size: 20px;
+    padding: 3px 12px;
+}
+
+.sidebar-content-container .shiny-options-group .radio label {
+    font-weight: 200;
+}
+
 .map-container {
+    width: 66.6%;
     height: 100vh;
 }
 
 .map-container #map {
     height: 100% !important;
+}
+
+#logoContainer {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: -50px;
+}
+
+#epi-logo {
+    width: 60%;
+}
+
+.leaflet-popup-content {
+    font-family: 'ff-dagny-web-pro', sans-serif;
+    font-size: 16px;
 }

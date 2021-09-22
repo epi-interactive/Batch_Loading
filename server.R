@@ -55,9 +55,13 @@ server <- function(input, output) {
     
     
     output$page <- renderUI({
-        div(class = "map-container",
-            leafletOutput("map"),
-            uiOutput("controls")
+        div(class = "main-container",
+            div(class = "sidebar-container",
+                uiOutput("controls")       
+            ),
+            div(class = "map-container",
+                leafletOutput("map")       
+            )
         )
     })
     
@@ -67,15 +71,14 @@ server <- function(input, output) {
     })
     
     output$controls <- renderUI({
-        absolutePanel(
-            top = 15,
-            left = 15,
-            width = 500,
-            wellPanel(
-                tags$h3("Batch loading data"),
-                p("Tress owned/maintained by Parks, Sport and Recreation Business Unit, Wellington City Council."),
-                p("Access the data", tags$a(href = "https://data-wcc.opendata.arcgis.com/datasets/WCC::wcc-trees/about", target = "_blank", "here")),
-                uiOutput("batchLoadingControls")
+        div(class = "sidebar-content-container",
+            tags$h3("Batch loading data"),
+            tags$hr(),
+            p("Trees owned/maintained by Parks, Sport and Recreation Business Unit, Wellington City Council."),
+            p("Access the data", tags$a(href = "https://data-wcc.opendata.arcgis.com/datasets/WCC::wcc-trees/about", target = "_blank", "here")),
+            uiOutput("batchLoadingControls"),
+            div(id = "logoContainer",
+                tags$img(id = "epi-logo", src = "images/Epi_Logo.png")
             )
         )
     })
@@ -104,7 +107,6 @@ server <- function(input, output) {
             )
         )
     })
-    
     
 
 # Batch functions ---------------------------------------------------------
