@@ -21,13 +21,14 @@
 
 .sidebar-content-container {
     color: #fff;
-    font-family: ff-dagny-web-pro, sans-serif;
+    font-family: "Segoe UI", sans-serif;
     font-size: 20px;
     font-weight: 200;
 }
 
 .sidebar-content-container h3 {
     font-size: 45px;
+    font-family: ff-dagny-web-pro, sans-serif;
     font-weight: bold;
     margin-bottom: 50px;
     text-align: center;
@@ -70,6 +71,6 @@
 }
 
 .leaflet-popup-content {
-    font-family: 'ff-dagny-web-pro', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     font-size: 16px;
 }
