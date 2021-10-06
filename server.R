@@ -103,7 +103,7 @@ server <- function(input, output) {
         div(style = "margin-bottom: 20px",
             paste0(
                 "Showing ", 1, "-", format(batchSizes()[length(batchSizes())], big.mark = ","), 
-                " of ", format(maxShapes, big.mark = ","), " locations"
+                " of ", format(maxShapes, big.mark = ","), " locations, tallest to shortest"
             )
         )
     })
