@@ -6,7 +6,7 @@ One strategy we have to get around this is batch loading - splitting up the data
 
 In this example, we use batch loading to present spatial data on trees managed by the Wellington City Council (13,539 records).
 
-You can try out the app [here](https://rshiny2.epi-interactive.com/apps/batch-loading/ "Link to shiny application demo on rshiny2.epi-interactive.com")
+You can try out the app [here](https://rshiny2.epi-interactive.com/apps/batch_loading/ "Link to shiny application demo on rshiny2.epi-interactive.com")
 
 ![Screenshot of batch loading tool. Controls left, map of Wellington with green markers](www/images/readme_screenshot.PNG "Screenshot of batch loading tool")
 
